@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card mb-3 text-center" style='margin-top:250px;width:1200px;margin-left:auto;margin-right:auto;'>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Authors</th>
+                <th scope="col">Count</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>{{this_book.id}}</th>
+                    <td>{{this_book.name}}</td>
+                    <td>{{this_book.description}}</td>
+                    <td>{{this_book_author.name}} {{this_book_author.patronymic}} {{this_book_author.surname}}</td>
+                    <td>{{this_book.count}}</td>
+                </tr>
+    
+            
+            </tbody>
+          </table>
+    </div>
+  </div>
+{% endblock %}

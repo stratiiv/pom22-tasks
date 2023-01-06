@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content%}
+<div class="card mb-3 text-center" style='margin-top:250px;width:1200px;margin-left:auto;margin-right:auto;'>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Role</th>
+                <th scope="col">Created</th>
+                <th scope="col">Orders id</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>{{this_user.id}}</th>
+                    <td>{{this_user.first_name}} {{this_user.last_name}}</td>
+                    <td>{{this_user.email}}</td>
+                    <td>{{group}}</td>
+                    <td>{{this_user.date_joined}}</td>
+                    <td>{{orders}}</td>
+                </tr>
+            </tbody>
+          </table>
+    </div>
+  </div>
+{% endblock %}

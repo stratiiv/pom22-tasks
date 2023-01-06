@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card mb-3 text-center" style='margin-top:250px;width:1200px;margin-left:auto;margin-right:auto;'>
+    <div class="card-body">
+        <form class="form-signin" method='POST'>
+            {% csrf_token %}
+              <h1 class="h3 mb-3 font-weight-normal">Create order</h1>
+              {{form.as_p}}
+              <button type="submit" class="btn btn-primary mb-2">Create</button>
+            </form>
+    </div>
+  </div>
+{% endblock %}

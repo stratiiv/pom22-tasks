@@ -1,0 +1,55 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card mb-3 text-center" style='margin-top:250px;width:1200px;margin-left:auto;margin-right:auto;'>
+    <div class="card-body">
+        <form method='POST'>
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-5">
+                <input name='name' type="text" class="form-control" placeholder="Filter by Name">
+              </div>
+              <div class="col-5">
+                <select name='authors_list'class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                    <option selected>Choose author</option>
+                    {% for book in books %}
+                    {% for author in book.authors.all %}
+                    <option>{{author.name}} {{author.patronymic}} {{author.surname}}</option>
+                    {% endfor %}
+                    {% endfor %}
+                  </select>
+              </div>
+              <div class="col-2">
+                <button type="submit" class="btn btn-primary mb-2 ">Filter</button>
+              </div>
+            </div>
+          </form>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Authors</th>
+                <th scope="col">Count</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                {% for author in book.authors.all %}
+                <tr>
+                    <th>{{book.id}}</th>
+                    <td><a href="{% url 'book-details' book.id %}">{{book.name}}</a></td>
+                    <td>{{book.description}}</td>
+                    <td>{{author.name}} {{author.patronymic}} {{author.surname}} </td>
+                    <td>{{book.count}}</td>
+                </tr>
+                {% endfor %}
+                {% endfor %}
+            
+            </tbody>
+          </table>
+    </div>
+  </div>
+{% endblock %}

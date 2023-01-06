@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card mb-3 text-center" style='margin-top:250px;width:1200px;margin-left:auto;margin-right:auto;'>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Book</th>
+                <th scope="col">Created at</th>
+                <th scope="col">End at</th>
+                <th scope="col">Plated end at</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <th>{{order.id}}</th>
+                    <td>{{order.book.name}}</td>
+                    <td>{{order.created_at}}</td>
+                    <td>{{order.end_at}} </td>
+                    <td>{{order.plated_end_at}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+          {% comment %} <form method="POST">{% csrf_token %}<button name='create_author' value='create' type="submit" class="btn btn-primary text-center">Створити автора</button></form> {% endcomment %}
+    </div>
+  </div>
+{% endblock %}

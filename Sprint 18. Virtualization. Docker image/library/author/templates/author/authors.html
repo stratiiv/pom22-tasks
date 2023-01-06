@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card mb-3 text-center" style='margin-top:250px;width:1200px;margin-left:auto;margin-right:auto;'>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Patronymic</th>
+                <th scope="col">Books</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for author in authors %}
+                <tr>
+                    <th>{{author.id}}</th>
+                    <td><a href="{% url 'author-details' author.id %}">{{author.name}}</a></td>
+                    <td>{{author.surname}}</td>
+                    <td>{{author.patronymic}} </td>
+                    <td>{{author.books}}</td>
+                    <td>{% if author.books == '' %}<a href="{% url 'delete-author' author.id %}">Delete author</a>{% endif %}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+  </div>
+{% endblock %}

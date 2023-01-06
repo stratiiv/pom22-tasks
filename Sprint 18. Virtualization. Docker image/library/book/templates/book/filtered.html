@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card mb-3 text-center" style='margin-top:250px;width:1200px;margin-left:auto;margin-right:auto;'>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Authors</th>
+                <th scope="col">Count</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                {% for author in book.authors.all %}
+                <tr>
+                    <th>{{book.id}}</th>
+                    <td><a href="{% url 'book-details' book.id %}">{{book.name}}</a></td>
+                    <td>{{book.description}}</td>
+                    <td>{{author.name}} {{author.patronymic}} {{author.surname}} </td>
+                    <td>{{book.count}}</td>
+                </tr>
+                {% endfor %}
+                {% endfor %}
+            
+            </tbody>
+          </table>
+    </div>
+  </div>
+{% endblock %}
